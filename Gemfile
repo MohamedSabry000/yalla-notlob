@@ -45,6 +45,7 @@ gem "bootsnap", require: false
 # install device gem
 
 gem 'devise'
+gem 'turbolinks'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
