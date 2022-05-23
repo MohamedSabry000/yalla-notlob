@@ -1,0 +1,16 @@
+current directory: /home/nehal/yalla-notlob/vendor/bundle/ruby/3.1.0/gems/strscan-3.0.3/ext/strscan
+/home/nehal/.rbenv/versions/3.1.2/bin/ruby -I /home/nehal/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20220523-63269-39h6a5.rb extconf.rb
+checking for onig_region_memsize() in ruby.h... yes
+creating Makefile
+
+current directory: /home/nehal/yalla-notlob/vendor/bundle/ruby/3.1.0/gems/strscan-3.0.3/ext/strscan
+make DESTDIR\= clean
+
+current directory: /home/nehal/yalla-notlob/vendor/bundle/ruby/3.1.0/gems/strscan-3.0.3/ext/strscan
+make DESTDIR\=
+compiling strscan.c
+linking shared-object strscan.so
+
+current directory: /home/nehal/yalla-notlob/vendor/bundle/ruby/3.1.0/gems/strscan-3.0.3/ext/strscan
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 strscan.so ./.gem.20220523-63269-1h8ojc

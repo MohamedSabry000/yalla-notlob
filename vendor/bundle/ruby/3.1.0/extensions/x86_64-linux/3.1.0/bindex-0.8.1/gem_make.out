@@ -1,0 +1,15 @@
+current directory: /home/nehal/yalla-notlob/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+/home/nehal/.rbenv/versions/3.1.2/bin/ruby -I /home/nehal/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20220523-63269-ew9ph9.rb extconf.rb
+creating Makefile
+
+current directory: /home/nehal/yalla-notlob/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= clean
+
+current directory: /home/nehal/yalla-notlob/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\=
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /home/nehal/yalla-notlob/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20220523-63269-hs048w/skiptrace/internal
