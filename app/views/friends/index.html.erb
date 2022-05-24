@@ -21,7 +21,7 @@
       <th scope="row"><%= index+1 %></th>
       <td><img src="<%= @pics[index] %>" alt="profile_picture" width="50" height="50"> </td>
       <td><%= friend.email %></td>
-      <td><%= link_to friend_as_user.full_name, user_path(friend_as_user) %></td>
+      <td><%= friend_as_user.username %></td>
       <td>
         <%= link_to "Unfriend", friend_path(friend), class: "btn  btnorder",
                   method: :delete,

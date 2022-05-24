@@ -1,14 +1,15 @@
 class FriendsController < ApplicationController
+  skip_before_action :verify_authenticity_token
     def index
         @friends = Friend.where(user_id: current_user.id)
         @pics = Array.new
         @friends.each do |friend|
             user = User.find_by(email: friend.email)
-            if user
-                @pics.push(user.get_image)
-            else
-                @pics.push(helpers.get_avatar(friend.email))
-            end
+            # if user
+                # @pics.push(user.get_image)
+            # else
+                # @pics.push(helpers.get_avatar(friend.email))
+            # end
         end
     end
     
@@ -17,6 +18,7 @@ class FriendsController < ApplicationController
     end
 
     def create
+      # skip_before_action :verify_authenticity_token
         # Check if user exists or not
         email = friend_params.require(:email)
         user = User.find_by(email: email)
@@ -33,7 +35,7 @@ class FriendsController < ApplicationController
         
         # Check if user already has friend and the firend
         friend_already_exists = false
-        current_userfriends.each do |friend| 
+        current_user.friends.each do |friend| 
             if friend.email == email
                 friend_already_exists = true
                 break
