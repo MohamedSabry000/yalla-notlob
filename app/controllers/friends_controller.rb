@@ -62,9 +62,9 @@ class FriendsController < ApplicationController
 
         # Before we delete the friend, we must first check if this friend
         # is added to a group 
-        @friend.group_friends.each do |group_friend|
-            group_friend.destroy
-        end
+        # @friend.group_friends.each do |group_friend|
+        #     group_friend.destroy
+        # end
 
         # Now we destroy the friend
         @friend.destroy

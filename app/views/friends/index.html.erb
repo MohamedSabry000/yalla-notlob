@@ -23,9 +23,8 @@
       <td><%= friend.email %></td>
       <td><%= friend_as_user.username %></td>
       <td>
-        <%= link_to "Unfriend", friend_path(friend), class: "btn  btnorder",
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
+      <%= button_to "Unfriend", friend, method: :delete %>
+        
       </td>
     </tr>
     <% end %>
