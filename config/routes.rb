@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
    # Orders
    get "/orders/index", to: "orders#index"
-   post "/orders/create", to: "orders#create"
+   get "/orders/new", to: "orders#new"
  
+   post "/orders/new", to: "orders#create"
  
  
 end

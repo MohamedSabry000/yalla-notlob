@@ -3,11 +3,20 @@ class OrdersController < ApplicationController
       # get orders for the current user from the database
       @orders = Order.where(user_id: current_user.id)
     end
+
+    def new
+      # @order = Order.new
+
+    end
   
     def create
-    #   @order = Order.create(user_id: current_user.id)
-    #   @order.order_items.create(product_id: params[:product_id], quantity: params[:quantity])
-    #   redirect_to_index_path
+      order_type=params[:order_type]
+      restaurant_name=params[:restaurant_name]
+      img=params[:img]
+
+
+      @order = Order.create(user_id: current_user.id,total:0,order_type:order_type,restaurant_name:restaurant_name,status:"wating")
+      redirect_to orders_index_path
     end
   
     def show

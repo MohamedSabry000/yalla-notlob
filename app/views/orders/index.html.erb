@@ -17,7 +17,7 @@
                 </thead>
                 <tbody>
                     <% @orders.each do |order| @invited=OrderPartispant.where("order_id = " + order.id.to_s + "").count %>
-                      <% @joined=OrderPartispant.where("order_id = " + order.id.to_s + " and status = joined" ).count %>
+                      <% @joined=OrderPartispant.where("order_id = " + order.id.to_s + " and status = 'joined'" ).count %>
                       <tr>
                         <td><%= order.order_type %></td>
                         <td><%= order.restaurant_name %></td>
@@ -25,11 +25,6 @@
                         <td><%= @joined %></td>
                         <td><%= order.status %></td>
                         <td>
-                          <%= link_to 'Show', order %>
-                          <% if order.status != "finished" %>
-                            <%= link_to 'Finish', finish_order_path(order), method: :post, class: 'btn btn-success' %>
-                          <% end %>
-                          <%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %>
                         </td>
                       </tr>
                     <% end %>
