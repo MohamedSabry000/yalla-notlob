@@ -1,0 +1,33 @@
+<!-- Adding JavaScript file -->
+<%= javascript_pack_tag 'friends/index' %>
+
+<h1 class="listFriendsheader">Friends</h1>
+
+<%= render partial: 'form' %>
+<table class="table">
+  <thead class="tbhead">
+    <tr >
+      <th scope="col">#</th>
+      <th scope="col">Profile Picture</th>
+      <th scope="col">Email</th>
+      <th scope="col">Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each_with_index  do |friend, index| %>
+    <% friend_as_user = User.find_by(email: friend.email) %>
+    <tr>
+      <th scope="row"><%= index+1 %></th>
+      <td><img src="<%= @pics[index] %>" alt="profile_picture" width="50" height="50"> </td>
+      <td><%= friend.email %></td>
+      <td><%= link_to friend_as_user.full_name, user_path(friend_as_user) %></td>
+      <td>
+        <%= link_to "Unfriend", friend_path(friend), class: "btn  btnorder",
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
