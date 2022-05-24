@@ -49,6 +49,7 @@ class FriendsController < ApplicationController
         end
         # Friend exists, eveything is well
         @friend = Friend.new(friend_params)
+        
         @friend.user_id = current_user.id
         if @friend.save
             redirect_to action: "index"
