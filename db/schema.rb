@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_22_230309) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_24_021242) do
+  create_table "friends", force: :cascade do |t|
+    t.bigint "friend_id"
+    t.integer "users_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_friends_on_users_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false
@@ -24,4 +32,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_230309) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "friends", "users", column: "users_id"
 end
