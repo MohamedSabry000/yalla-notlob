@@ -1,108 +1,33 @@
-<html>
-      <head>
-            <style>
-                .asd{
-                    border : solid 3px ; 
-                    text-align: left;
-                }
+<!-- Adding JavaScript file -->
+<%= javascript_pack_tag 'friends/index' %>
 
-            body {
-            font-family: system-ui;
-            # background: #f06d06;
-            background: #dd7f36;
-            color: white;
-            text-align: center;
-        }
-        .left{
-            
-          border : solid 3px  #222329 ; 
-          text-align: center ; 
-          margin-left : 15% ; 
-          margin-right : 15%  ;
-        }
-        .list{
-          list-style-type: none;
-        }
-    .unfreind-btn {
-    display: inline-block;
-    text-align: center;
-    border-radius: 2px;
-    line-height: 19px;
-    cursor: pointer;
-    margin-left: -1px;
-    padding: 4px 15px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
-    border: 1px solid #c6c6c6;
-    color: #000;
-    text-decoration: none;
-    font-family: sans-serif;
-}
+<h1 class="listFriendsheader">Friends</h1>
 
-.unfreind-btn:hover {
-    background-color: #f6f6f6;
-    background-image: -webkit-linear-gradient(top,#f6f6f6,#f1f1f1);
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-#q{
-  width: 83%;
-
-}
-            </style>
-
-      </head>
-    <body>
-            <h3>friends</h3>
-
-            <div class= "add-friend">
-          <%= form_tag("/friends/search", method:"get",remote: true  ) do  %>
-                <div >
-                  
-                  <%= text_field_tag(:q) %>
-
-                </div>
-                <div id="add-friend">
-              <%= submit_tag("add new friend")  %>
-                </div>
-              
-              <% end %>
-
-
-            <h4>friends list</h4>
-
-            <div id= "asd">
-            <ul class="list">
-              <% @fris.each do |fri| %>
-                <% @alls.each do |all| %>
-                    <%   if fri.friend_id == all.id  %>
-
-                          <div class="left">
-                                
-                              <li  id="">
-                            <%= all.username %> |
-                            <%= all.email %> | 
-                           
-
-                            <%= image_tag all.avatar.variant(resize: "70x70")  if all.avatar.attached? %> 
-                             
-                              <%= link_to 'unfriend', friend_path(fri.friend_id) , 
-                              method: :delete  ,:class => "unfreind-btn destroy delete" ,
-                               data: {confirm: "are you sure ?",remote: true }   %>
-                              <%= yield %>
-                             
-                            </li>
-
-                            </div>
-
-                            
-
-                    <% end %>
-                
-              <% end %>
-              <% end %>
-            </ul>
-            </div>
-        </body>
- <html>
-
-
+<%= render partial: 'form' %>
+<table class="table">
+  <thead class="tbhead">
+    <tr >
+      <th scope="col">#</th>
+      <th scope="col">Profile Picture</th>
+      <th scope="col">Email</th>
+      <th scope="col">Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each_with_index  do |friend, index| %>
+    <% friend_as_user = User.find_by(email: friend.email) %>
+    <tr>
+      <th scope="row"><%= index+1 %></th>
+      <td><img src="<%= @pics[index] %>" alt="profile_picture" width="50" height="50"> </td>
+      <td><%= friend.email %></td>
+      <td><%= link_to friend_as_user.full_name, user_path(friend_as_user) %></td>
+      <td>
+        <%= link_to "Unfriend", friend_path(friend), class: "btn  btnorder",
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
