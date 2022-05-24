@@ -11,7 +11,7 @@ class FriendsController < ApplicationController
             end
         end
     end
-
+    
     def new
         @friend = Friend.new
     end
@@ -29,19 +29,22 @@ class FriendsController < ApplicationController
             redirect_to friends_path, alert: "How sad :("
             return
         end
+
+        
         # Check if user already has friend and the firend
         friend_already_exists = false
-        current_user.friends.each do |friend| 
+        current_userfriends.each do |friend| 
             if friend.email == email
                 friend_already_exists = true
                 break
             end
         end
         if friend_already_exists
-            redirect_to friends_path, alert: "Wow you must really like that person!. Sorry you can have theim once"
+            redirect_to friends_path, alert: "Wow you must really like that person!. Sorry you can have them once"
             return
         end
-
+        def show
+        end
         # Friend exists, eveything is well
         @friend = Friend.new(friend_params)
         @friend.user_id = current_user.id
