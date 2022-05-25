@@ -8,9 +8,7 @@ Rails.application.routes.draw do
    delete "/friends/:id", to: "friends#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-   # Defines the root path route ("/")
-   root 'pages#myaccount'
-
+  
    # Orders
    get "/orders/index", to: "orders#index"
    get "/orders/new", to: "orders#new"
