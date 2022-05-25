@@ -17,10 +17,12 @@
                     <div class="d-flex justify-content-between mb-3">
                     
                       <%= link_to group.name, group_path(group), class: "nav-link", style: 'width: 100%;'  %>
-                      <%= link_to "delete", group_path(@group), data:{
+                      <%# link_to "delete", group_path(@group), data:{
                         turbo_method: :delete,
                         turbo_confirm: "Are your sure?"
                       } %>
+                      <%= button_to 'delete', group_path(group), method: :delete,
+                              form: {data: {confirm: 'Are you sure?'}} %>
                       
                     </div>
                 <% end %> 
@@ -48,7 +50,7 @@
                             <div><img src="<%# friend_as_user.get_image %>" alt="profle_pic" width="50" height="50"></div>
                             <div><h5 class="font-weight-light"><%= friend_as_user.username %></h5></div>
                             <div class="">
-                            <button></button>
+                          
                               <%= link_to "Delete", group_group_friend_path(@group, group_friend),
   
                               data: { "turbo-method": :delete  } %> 
