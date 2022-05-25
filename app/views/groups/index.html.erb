@@ -45,8 +45,8 @@
                             <div><img src="<%# friend_as_user.get_image %>" alt="profle_pic" width="50" height="50"></div>
                             <div><h5 class="font-weight-light"><%= friend_as_user.username %></h5></div>
                             <div class="">
-                                <%= link_to "Delete", group_group_friend_path(@group, group_friend), method: :delete, class: 'btn btn-danger',
-                                  data: { confirm: "Are you sure?" } %>
+                              <%= link_to "Delete", group_group_friend_path(@group, group_friend), class: 'btn btn-danger',  
+                              data: { confirm: "Are you sure?", "turbo-method": :delete  } %> 
                             </div>
                         </li>
                     <% end %>
