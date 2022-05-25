@@ -1,0 +1,34 @@
+<% if @invitbit == "2" %>
+    <div class="addorderheader mb-5">Invited Friends</div>
+<% elsif @invitbit == "1" %>
+    <div class="addorderheader mb-5">Joined Friends</div>
+<% end %>
+
+<div class="container" style="margin-left:5%;">
+  <div class="row">
+    <% @orders_friends.each do |order_friend| %>
+        <% @friend=User.find_by(email:order_friend.friend.email) %>
+        <div class="card mb-4 col-md-5 mr-4 ml-4" >
+            <div class="card-header">
+            <%= @friend.full_name%>
+
+
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                </h5>
+                <p class="card-text">
+                <img src="<%= @friend.get_image%>" alt="profile_picture" width="50" height="50" style="float:left">
+                <%= @friend.email%>
+                </p>
+                <% if current_user.id ==  order_friend.order.user_id %>
+                <%= link_to "Delete", order_order_friend_path(@order,order_friend.id,status:@invitbit), method: :delete, class: 'btn btn-danger',
+                data: { confirm: "Are you sure?" } %>
+                <% end %>
+            </div>
+        </div>
+
+
+    <% end %>
+</div>
+</div>

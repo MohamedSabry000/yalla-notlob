@@ -1,0 +1,12 @@
+<%= form_with url: "/groups/#{@group.id}/group_friends" do |form| %>
+<div class="form-inline">
+
+  <div class="form-group mb-2">
+    <%= form.email_field  :friend_email, class: "form-control mr-2", placeholder: "Friend Email..." %>
+  </div>
+  <div>
+    <%= form.submit 'Add', class: "btn btn-primary mb-2" %>
+  </div>
+
+</div>
+<% end %>

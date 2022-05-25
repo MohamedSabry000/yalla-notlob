@@ -1,0 +1,13 @@
+<%= form_with url: '/groups' do |form| %>
+    <div class="form-inline">
+    
+      <div class="form-group mb-2">
+        <%= form.text_field  :group_name, class: "form-control mr-2", required: true, placeholder: "Name...", style:"width:90%" %>
+      </div>
+      <div>
+        <%= form.submit 'Save', class: "btn  btnorder mb-2" %>
+      </div>
+    
+    </div>
+    <% end %>
+    
