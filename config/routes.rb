@@ -8,6 +8,11 @@ Rails.application.routes.draw do
    delete "/friends/:id", to: "friends#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  
+   # Orders
+   get "/orders/index", to: "orders#index"
+   get "/orders/new", to: "orders#new"
+   post "/orders/new", to: "orders#create"
   # Define route for groups
   resources :groups do
     resources :group_friends
