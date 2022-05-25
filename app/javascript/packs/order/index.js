@@ -52,6 +52,11 @@ $(document).ready(function () {
           content =
           `
           <tr class="card" id="${res[0]}" style="margin-bottom: 20px;">
+            <td class="card-header">
+
+            <img src="<%= asset_path('logo.png') %>" alt="profile_picture" width="50" height="50">
+              ${res[0]} : ${result.full_name}
+            </td>
             <td>
               ${result.email}
             </td>
