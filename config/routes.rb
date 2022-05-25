@@ -10,8 +10,6 @@ Rails.application.routes.draw do
    # Orders
    get "/orders/index", to: "orders#index"
    get "/orders/new", to: "orders#new"
- 
    post "/orders/new", to: "orders#create"
- 
  
 end
