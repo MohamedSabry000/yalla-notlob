@@ -46,22 +46,12 @@ $(document).ready(function () {
           $(".friendexistalert").css("display", "none");
 
           //mfrod hna y7sl error :) res[0] id just an id
-          if (result.img == null) {
-            imageUrl = `https://gravatar.com/avatar/${CryptoJS.MD5(
-              result.email
-            ).toString()}?s=32&d=identicon&r=PG`;
-            //  console.log(imageUrl,)
-          } else {
-            imageUrl = result.image;
-            // console.log(res.get_image)
-          }
+          imageUrl = result.image;
+
 
           content =
           `
           <tr class="card" id="${res[0]}" style="margin-bottom: 20px;">
-            <td class="card-header"><img src="${imageUrl}" alt="profile_picture" width="50" height="50">
-              ${res[0]} : ${result.full_name}
-            </td>
             <td>
               ${result.email}
             </td>
