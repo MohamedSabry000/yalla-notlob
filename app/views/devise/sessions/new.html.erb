@@ -18,6 +18,7 @@
        <% end %>
       <%= f.submit "Log in", class: "btn btn-primary" %>
       <%= render "devise/shared/links", class: "btn btn-secondary" %>
+      <%= link_to "Register with Facebook", user_facebook_omniauth_authorize_path %>
       <%= f.submit "Log in With GitHub", class: "btn btn-primary" %>
     </div>
 
