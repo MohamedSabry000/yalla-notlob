@@ -37,7 +37,7 @@ class GroupsController < ApplicationController
         @group.user_id = current_user.id
 
         if @group.save
-            redirect_to action: "groups"
+            redirect_to action: 'index'
         else
             redirect_to groups_path, alert: "Can't create group!"
         end
