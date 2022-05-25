@@ -4,11 +4,11 @@ class FriendsController < ApplicationController
         @pics = Array.new
         @friends.each do |friend|
             user = User.find_by(email: friend.email)
-            # if user
-            #     @pics.push(user.get_image)
-            # else
-            #     @pics.push(helpers.get_avatar(friend.email))
-            # end
+            if user
+                @pics.push(user.image)
+            else
+                @pics.push(helpers.get_avatar(friend.email))
+            end
         end
     end
 
@@ -33,7 +33,7 @@ class FriendsController < ApplicationController
         end
         # Check if user already has friend and the firend
         friend_already_exists = false
-        current_user.friends.each do |friend| 
+        current_user.friends.each do |friend|
             if friend.email == email
                 friend_already_exists = true
                 break
@@ -58,14 +58,14 @@ class FriendsController < ApplicationController
         @friend = Friend.find(params[:id])
 
         # Before we delete the friend, we must first check if this friend
-        # is added to a group 
+        # is added to a group
         @friend.group_friends.each do |group_friend|
             group_friend.destroy
         end
 
         # Now we destroy the friend
         @friend.destroy
-    
+
         redirect_to action: "index"
     end
 
