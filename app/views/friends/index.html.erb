@@ -1,5 +1,4 @@
 <!-- Adding JavaScript file -->
-<%= javascript_pack_tag 'friends/index' %>
 
 <h1 class="listFriendsheader">Friends</h1>
 
@@ -21,12 +20,8 @@
       <th scope="row"><%= index+1 %></th>
       <td><img src="<%= @pics[index] %>" alt="profile_picture" width="50" height="50"> </td>
       <td><%= friend.email %></td>
-      <td><%= link_to friend_as_user.full_name, user_path(friend_as_user) %></td>
-      <td>
-        <%= link_to "Unfriend", friend_path(friend), class: "btn  btnorder",
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-      </td>
+      <td><%= friend_as_user.username %></td>
+      
     </tr>
     <% end %>
   </tbody>

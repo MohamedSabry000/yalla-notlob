@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
         # puts @group.user.full_name
 
         @groups = Group.where(user_id: current_user.id)
-        # @group_members = @group.group_friends
+        @group_members = @group.group_friends
 
         render :index
     end

@@ -5,23 +5,31 @@ class GroupFriendsController < ApplicationController
     end
 
     def create
+        
         friend_query_set = Friend.where(email: group_friends_params.require(:friend_email), user_id: current_user.id)  # user_id = owner of the friend
         # To ensure friend exists and user has theim as friend
         if friend_query_set.count > 0
+           
             friend = friend_query_set[0]
+            
             # Check if friend is already added to that group
             group_friend_exists = GroupFriend.find_by(group_id: group_friends_params.require(:group_id), friend_id: friend.id)
             if group_friend_exists
+               
                 redirect_to group_path(group_friends_params.require(:group_id)), alert: "Friend is already added to the group"
                 return
             end
             @group_friend = GroupFriend.new
-            @group_friend.group_id = group_friends_params.require(:group_id)
+            @group_friend.group_id  = group_friends_params.require(:group_id)
+            
+      
             @group_friend.friend_id = friend.id
 
             if @group_friend.save
+              
                 redirect_to group_path(group_friends_params.require(:group_id)), notice: "Friend added successfully"
             else
+                
                 render :new
             end
 

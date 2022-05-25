@@ -4,18 +4,20 @@ class FriendsController < ApplicationController
         @pics = Array.new
         @friends.each do |friend|
             user = User.find_by(email: friend.email)
-            if user
-                @pics.push(user.get_image)
-            else
-                @pics.push(helpers.get_avatar(friend.email))
-            end
+            # if user
+            #     @pics.push(user.get_image)
+            # else
+            #     @pics.push(helpers.get_avatar(friend.email))
+            # end
         end
     end
 
     def new
         @friend = Friend.new
     end
+    def show
 
+    end
     def create
         # Check if user exists or not
         email = friend_params.require(:email)

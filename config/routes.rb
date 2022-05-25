@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
    get "/friends/search", to: "friends#search"
   resources :friends
+  get "/friends/index", to: "friends#index"
    delete "/friends/:id", to: "friends#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
