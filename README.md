@@ -43,7 +43,7 @@ Things you may want to cover:
 
 * rails generate devise:install
 
-* in **config/environments/development.rb:** => add 
+* in **config/environments/development.rb:** => add
 ```
 config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 ```
@@ -68,3 +68,13 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
 * rails db:migrate
 
+$ rails generate model order user:references total:decimal order_type:string restaurant_name:string img:string status:string
+
+
+$ rails generate controller orders
+
+$ rails generate model orderPartispant user:references order:references
+
+$  rails generate migration add_status_to_order_partispants status:string
+
+$  rails generate migration create_items name:string amount:number price:number comment:text

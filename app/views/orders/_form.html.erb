@@ -1,0 +1,79 @@
+<%= form_with model: @order do |form| %>
+  <div class="container" >
+    <div class="row">
+      <div class="col-md-6 addordercontainer" >
+        <div class="card-header addorderheader">
+          Add Order
+        </div>
+        <div class="card-body" >
+          <div class="form-divs">
+            <%= form.label :order_for ,class:"form-label" %><br>
+            <%= form.select :order_for, options_for_select(['breakfast', 'launch', 'dinner']), {}, class: "form-control" %>
+          </div>
+          <div class="form-divs">
+            <%= form.label :restaurant_name ,class:"form-label" %><br>
+            <%= form.text_field :name ,class:"form-control" %>
+          </div>
+          <div class="alert alert-warning alert-dismissible fade show restautantalert" role="alert" style="display: none;">
+            <strong>Warning!</strong> Restaurant name shoudn't be empty.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="form-divs">
+            <%= form.label :menu ,class:"form-label" %><br>
+            <%= form.file_field :menu ,class:"form-control" %>
+          </div>
+          <div class="form-divs">
+            <label class:"form-label col-md-12">Friends</label>
+            <div class="row">
+              <input class="form-control me-2 col-md-8" type="search" placeholder="Friend Email.." aria-label="Search" id="fiendsearch" >
+              <button class="btn btn-outline-purple col-md-3" id="fiendsearch_form">Add friend</button>
+            </div>
+          </div>
+          <div class="alert  alert-danger alert-dismissible fade show friendalert" role="alert" style="display: none;">
+            <strong>Error!</strong> This friend is not in your friends list !!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="alert alert-dark alert-dismissible fade show friendexistalert" role="alert" style="display: none;">
+            <strong>Warning!</strong> This Friend has already been added !!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="form-divs">
+            <label class:"form-label">Groups</label>
+            <div class="row">
+              <input class="form-control me-2 col-md-8" type="search" placeholder="Group Name.." aria-label="Search" id="groupsearch" >
+              <button class="btn btn-outline-purple col-md-3" id="groupsearch_form">Add Group</button>
+            </div>
+          </div>
+          <div class="alert alert-danger alert-dismissible fade show groupalert" role="alert" style="display: none;">
+            <strong>Error!</strong> This Group is not exist !!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div>
+            <%= form.submit class:"btn btn-purple" ,id:"submit-order"%>
+          </div>
+        </div>
+      </div>
+      <fieldset class="col-md-5 fieldsetorder" >
+        <legend class="legendorder" ">Friends</legend>
+        <table class="table  orderfriendtable">
+          <thead ><label class="form-label" style="float:left">Number Of Friends Invited : </label>
+            <input id="numberoffriends" class="form-control" disabled style="width: 22%;
+                  float: right;" value="0">
+            <br>
+            <hr>
+          </thead>
+          <tbody id="orderfriends">
+          </tbody>
+        </table>
+      </fieldset>
+    </div>
+  </div>
+<% end %>

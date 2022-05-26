@@ -10,13 +10,17 @@
       <%= f.email_field :email, class: "form-control" %>
       <%= f.label :password %>
       <%= f.password_field :password, class: "form-control" %>
-
+      <% if devise_mapping.rememberable? %>
+      <div>
       <%= f.check_box :remember_me, class: "form-check-input" %>
       <%= f.label :remember_me, class: "form-check-label" %>
-
-      <br />
+      </div>
+       <% end %>
       <%= f.submit "Log in", class: "btn btn-primary" %>
       <%= render "devise/shared/links", class: "btn btn-secondary" %>
+      <%= link_to "Register with Facebook", user_facebook_omniauth_authorize_path %>
+      <%= f.submit "Log in With GitHub", class: "btn btn-primary" %>
     </div>
+
   </div>
 <% end %>
