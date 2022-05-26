@@ -12,6 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :avatar_url             
       t.string :provider              
 
+      t.string :image, null: false, default: "default_user.jpg"
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
