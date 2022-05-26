@@ -25,9 +25,9 @@ Rails.application.routes.draw do
     collection do
       get 'addFriendtoOrder'
     end
-    # collection do
-    #   get 'addGrouptoOrder'
-    # end
+    collection do
+      get 'addGrouptoOrder'
+    end
     # collection do
     #   get 'order_friend_params'
     # end

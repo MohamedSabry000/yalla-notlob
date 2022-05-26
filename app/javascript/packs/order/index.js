@@ -48,15 +48,15 @@ $(document).ready(function () {
           //mfrod hna y7sl error :) res[0] id just an id
           imageUrl = result.image;
 
+{/* <td class="card-header">
 
+<img src="<%= asset_path('logo.png') %>" alt="profile_picture" width="50" height="50">
+  ${res[0]} : ${result.full_name}
+</td> */}
           content =
           `
           <tr class="card" id="${res[0]}" style="margin-bottom: 20px;">
-            <td class="card-header">
 
-            <img src="<%= asset_path('logo.png') %>" alt="profile_picture" width="50" height="50">
-              ${res[0]} : ${result.full_name}
-            </td>
             <td>
               ${result.email}
             </td>
@@ -104,22 +104,12 @@ $(document).ready(function () {
 
           //check if current row id already exist
           if (!checkForMatch(friendsids, res[0].friendsid[i])) {
-            if (result[i].image == null) {
-              imageUrl = `https://gravatar.com/avatar/${CryptoJS.MD5(
-                result[i].email
-              ).toString()}?s=32&d=identicon&r=PG`;
-              //  console.log(imageUrl,)
-            } else {
-              imageUrl = result[i].image;
-              // console.log(res.get_image)
-            }
+
+            imageUrl = result[i].image;
 
             content =
               `<tr class="card" id="${res[0].friendsid[i]}" style="margin-bottom:20px">
-                <td class="card-header">
-                  <img src="${imageUrl}" alt="profile_picture" width="50" height="50" />
-                  ${res[0].friendsid[i]} : ${result[i].full_name}
-                </td>
+
                 <td class="card-body"> ${result[i].email} </td>
                 <td class="card-footer">
                   <button style="margin-left:70%" class="btn btn-danger removefriend" id="removefriend${res[0].friendsid[i]}">remove</button>
