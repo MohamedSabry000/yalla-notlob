@@ -15,7 +15,7 @@
 
                 <% @groups.each do |group| %>
                     <div class="d-flex justify-content-between mb-3">
-                    
+
                       <%= link_to group.name, group_path(group), class: "nav-link", style: 'width: 100%;'  %>
                       <%# link_to "delete", group_path(@group), data:{
                         turbo_method: :delete,
@@ -23,11 +23,11 @@
                       } %>
                       <%= button_to 'delete', group_path(group), method: :delete,
                               form: {data: {confirm: 'Are you sure?'}} %>
-                      
+
                     </div>
-                <% end %> 
+                <% end %>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -47,15 +47,13 @@
                      <% @group.group_friends.each do |group_friend| %>
                      <% friend_as_user = User.find_by(email: group_friend.friend.email) %>
                         <li class="list-group-item d-flex justify-content-between">
-                            <div><img src="<%# friend_as_user.get_image %>" alt="profle_pic" width="50" height="50"></div>
+                            <div>
+                              <%= image_tag (friend_as_user.image), class: "img-responsive",  alt:"profile_picture", style:"width:50px;height:50px" %>
+                            </div>
                             <div><h5 class="font-weight-light"><%= friend_as_user.username %></h5></div>
                             <div class="">
-                          
-                              <%= link_to "Delete", group_group_friend_path(@group, group_friend),
-  
-                              data: { "turbo-method": :delete  } %> 
 
-                              <%= button_to 'delete', group_group_friend_path(@group, group_friend), method: :delete,
+                              <%= button_to 'delete', group_group_friend_path(@group, group_friend), method: :delete, class: "btn btn-danger",
                               form: {data: {confirm: 'Are you sure?'}} %>
                             </div>
                         </li>
