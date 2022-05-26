@@ -47,14 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_005508) do
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer "receiver_id", null: false
-    t.integer "sender_id", null: false
-    t.boolean "viewed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["receiver_id"], name: "index_notifications_on_receiver_id"
-    t.index ["sender_id"], name: "index_notifications_on_sender_id"
   create_table "group_friends", force: :cascade do |t|
     t.integer "group_id", null: false
     t.integer "friend_id", null: false
@@ -83,6 +75,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_005508) do
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_items_on_order_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "receiver_id", null: false
+    t.integer "sender_id", null: false
+    t.boolean "viewed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_notifications_on_receiver_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
   create_table "order_partispants", force: :cascade do |t|
@@ -144,7 +146,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_005508) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "friends", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "friends", "users"
