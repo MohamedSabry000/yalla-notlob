@@ -23,7 +23,9 @@
       </td>
       <td><%= friend.email %></td>
       <td><%= friend_as_user.username %></td>
-
+      <td>
+        <%= button_to "Unfriend", friend, method: :delete %>
+      </td>
     </tr>
     <% end %>
   </tbody>

@@ -27,8 +27,8 @@
                         <td>
                             <%= link_to "View", order %>
                             <% if order.status == "wating" %>
-                                <%= link_to "Finish", change_status_to_completed_order_path(order, status: :complete), method: :patch %>
-                                <%= link_to "Cancel", change_status_to_canceled_order_path(order, status: :canceled), method: :patch %>
+                                <%= button_to "Finish", change_status_to_completed_order_path(order, status: :complete), method: :patch, class: "btn btn-warning" %>
+                                <%= button_to "Cancel", change_status_to_canceled_order_path(order, status: :canceled), method: :patch, class: "btn btn-info" %>
                             <% end %>
                         </td>
                       </tr>
