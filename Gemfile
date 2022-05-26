@@ -47,6 +47,7 @@ gem "bootsnap", require: false
 gem 'devise'
 gem 'turbolinks'
 
+gem 'devise_invitable', '~> 2.0.0'
 # Use Sass to process CSS
 gem "sassc-rails"
 gem "webpacker"
