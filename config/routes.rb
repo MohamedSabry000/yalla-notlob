@@ -1,14 +1,25 @@
 Rails.application.routes.draw do
-  devise_for :users do
-    get '/users/sign_out' => 'devise/sessions#destroy', :as => :destroy_user_session
-  end
+  # devise_for :users
+
+  # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } do
+  #   get '/users/sign_out' => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
+  #  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  
+  # authenticated :user do
+  #   root 'home#index', as: 'authenticated_root'
+  # end
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  # devise_scope :user do
+  #   root 'devise/sessions#new'
+  # end
   
   resources :friends
 
   resources :notifications
   
-  get "/friends/index", to: "friends#index"
-   delete "/friends/:id", to: "friends#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
 
