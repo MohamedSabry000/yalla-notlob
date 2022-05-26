@@ -1,51 +1,37 @@
 <%= form_with model: [ @order, @item || @order.items.build ] do |form| %>
-      <div class="container">
-      <div class="row"> 
-            <table class="table table-striped col-md-12 ">
-            <thead>
-            <tr>
+  <div class="container">
+    <div class="row">
+      <table class="table table-striped col-md-12 ">
+        <thead>
+          <tr>
             <th><%= form.label :name %></th>
             <th> <%= form.label :amount %> </th>
             <th><%= form.label :price %></th>
             <th> <%= form.label :comment %></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
             <td>
-            
-            <%= form.text_field :name , required: true %>
-
+              <%= form.text_field :name , required: true %>
             </td>
             <td>
-                  
-            
-            <%= form.number_field :amount, step: :any, required: true %>
-
+              <%= form.number_field :amount, step: :any, required: true %>
             </td>
             <td>
-
-            <%= form.number_field :price, step: :any, required: true %>
-      
-      
+              <%= form.number_field :price, step: :any, required: true %>
             </td>
             <td>
-            <%= form.text_field :comment, required: true %>
-
+              <%= form.text_field :comment, required: true %>
             </td>
-            </tr>
-            <tr>
+          </tr>
+          <tr>
             <td colspan=4>
-                  <%= form.submit class: "btn  btnorder" %>
+              <%= form.submit class: "btn  btnorder" %>
             </td>
-            </tr>
-            </tbody>
-      
-      
-            </table>
-
-
-</div>
-</div>
-  <% end %>
-  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
