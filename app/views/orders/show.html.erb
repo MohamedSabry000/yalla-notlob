@@ -62,6 +62,9 @@
                     <% end %>
                 </tbody>
             </table>
+            <% if @order.status == "waiting" && (@order.user == current_user || @invited_user)  %>
+              <h2 class="mt-5">Add Item</h2>
+              <%= render 'items/form' %>
         </div>
     </div>
 
