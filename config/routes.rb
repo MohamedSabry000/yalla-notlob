@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post "/orders/new", to: "orders#create"
 
   resources :orders do
+    resources :items
     resources :order_partispants
     member do
       patch :change_status_to_completed
