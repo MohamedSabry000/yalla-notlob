@@ -1,0 +1,2 @@
+class OrderPartispantsController < ApplicationController
+end

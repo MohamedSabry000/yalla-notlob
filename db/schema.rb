@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_232906) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_005508) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -62,6 +62,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_232906) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.integer "amount"
+    t.integer "price"
+    t.text "comment"
+    t.integer "user_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_items_on_order_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "order_partispants", force: :cascade do |t|
@@ -118,6 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_232906) do
   add_foreign_key "group_friends", "friends"
   add_foreign_key "group_friends", "groups"
   add_foreign_key "groups", "users"
+  add_foreign_key "items", "orders"
+  add_foreign_key "items", "users"
   add_foreign_key "order_partispants", "orders"
   add_foreign_key "order_partispants", "users"
   add_foreign_key "orders", "users"

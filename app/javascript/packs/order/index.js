@@ -130,8 +130,6 @@ $(document).ready(function () {
 
 function allIds() {
   formData = checkrows();
-  //formData=uniqueItems;
-  // console.log('thisis',formData)
   $.ajax({
     type: "GET",
     url: "order_friend_params",

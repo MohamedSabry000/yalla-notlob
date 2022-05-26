@@ -15,18 +15,19 @@ class OrdersController < ApplicationController
 
       @listofIds = session[:passed_variable]
       @get_value = @listofIds
-      session[:passed_variable]=[]
 
-      @order = Order.create(user_id: current_user.id,total:0,order_type:order_type,restaurant_name:restaurant_name,status:"wating")
+      @order = Order.create(user_id: current_user.id,total:0,order_type:order_type,restaurant_name:restaurant_name,status:"waiting")
       if @order.save
+
         if @get_value != nil
+          logger.info("@get_value is not nil")
           @get_value.each do |currentfriendid|
 
-            @order_friend=OrderFriend.new
+            @order_friend=OrderPartispant.new
             friend_email = Friend.find(currentfriendid).email
             friend_as_user = User.find_by(email: friend_email)
 
-            @order_friend.friend_id = friend_as_user.id      # currentfriendid
+            @order_friend.user_id = friend_as_user.id      # currentfriendid
             @order_friend.order_id= @order.id
 
             if @order_friend.save
@@ -54,7 +55,8 @@ class OrdersController < ApplicationController
 
     def show
       @order = Order.find(params[:id])
-      @order_items = @order.order_items
+      logger.info(@order)
+      @order_items = @order.items
     end
 
     def addFriendtoOrder
@@ -93,6 +95,10 @@ class OrdersController < ApplicationController
       end
     end
 
+    def order_friend_params
+      @listofIds =params[:formData]
+      session[:passed_variable] = @listofIds
+    end
     # def destroy
     #   @order = Order.find(params[:id])
     #   @order.destroy
