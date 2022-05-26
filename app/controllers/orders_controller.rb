@@ -99,6 +99,20 @@ class OrdersController < ApplicationController
       @listofIds =params[:formData]
       session[:passed_variable] = @listofIds
     end
+
+    def change_status_to_completed
+      @order = Order.find(params[:id])
+      @order.update(status: params[:status] )
+      redirect_to '/orders'
+      # redirect_to @order
+    end
+
+    def change_status_to_canceled
+      @order = Order.find(params[:id])
+      @order.update(status: params[:status])
+      redirect_to '/orders'
+      # redirect_to @order
+    end
     # def destroy
     #   @order = Order.find(params[:id])
     #   @order.destroy

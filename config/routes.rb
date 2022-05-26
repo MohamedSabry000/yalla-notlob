@@ -15,13 +15,16 @@ Rails.application.routes.draw do
   post "/orders/new", to: "orders#create"
 
   resources :orders do
-    # resources :order_friends
-    # member do
-    #   patch :change_status_to_completed
-    #   patch  :change_status_to_canceled
-    # end
+    resources :order_partispants
+    member do
+      patch :change_status_to_completed
+      patch  :change_status_to_canceled
+    end
 
-    # resources :order_friends
+    collection do
+      patch 'change_status_to_completed'
+    end
+
     collection do
       get 'addFriendtoOrder'
     end
