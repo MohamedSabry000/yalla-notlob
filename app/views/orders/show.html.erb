@@ -32,7 +32,7 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>User</th>
+   
                 <th>Name</th>
                 <th>Amount</th>
                 <th>Price</th>
@@ -41,9 +41,9 @@
               </tr>
             </thead>
             <tbody>
-              <% @order_items.each do |item| @user=User.where("id = " + item.user_id.to_s + "") %>
+              <% @order_items.each do |item|  %>
                 <tr>
-                  <td><%= @user.name %></td>
+                
                   <td><%= item.name %></td>
                   <td><%= item.amount %></td>
                   <td><%= item.price %></td>
