@@ -32,29 +32,23 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>User</th>
+   
                 <th>Name</th>
                 <th>Amount</th>
                 <th>Price</th>
                 <th>Comment</th>
-                <th>Actions</th>
+               
               </tr>
             </thead>
             <tbody>
-              <% @order_items.each do |item| @user=User.where("id = " + item.user_id.to_s + "") %>
+              <% @order_items.each do |item|  %>
                 <tr>
-                  <td><%= @user.username %></td>
+                
                   <td><%= item.name %></td>
                   <td><%= item.amount %></td>
                   <td><%= item.price %></td>
                   <td><%= item.comment %></td>
-                  <td>
-                            <%= link_to 'Show', order %>
-                  <%# <% if order.status != "finished" %>
-                  <%# <%= link_to 'Finish', finish_order_path(order), method: :post, class: 'btn btn-success' %>
-                  <%# <% end %>
-                  <%# <%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %>
-                  </td>
+
                 </tr>
               <% end %>
             </tbody>

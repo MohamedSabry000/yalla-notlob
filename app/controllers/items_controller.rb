@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    p "----------------create-----------------"
     @order = Order.find(params[:order_id])
     @item = @order.items.create(item_params)
     @item.user_id = current_user.id
@@ -13,7 +14,7 @@ class ItemsController < ApplicationController
 
     ActionCable.server.broadcast "order_#{params[:order_id]}",
       id: @item.id,
-      full_name: @item.full_name,
+      # full_name: @item.full_name,
       name: @item.name,
       amount: @item.amount,
       price: @item.price,
