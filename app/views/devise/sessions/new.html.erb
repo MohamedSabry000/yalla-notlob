@@ -1,25 +1,43 @@
 <h2>Log in</h2>
-
+<br />
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="card">
-    <div class="card-body">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "form-control" %>
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control" %>
+  <div class="form-group">
+    <div class="form-group row">
+      <%= f.label :email , class:"col-sm-2 col-form-label col-form-label-lg"  %>
+      <div class="col-sm-7">
+
+      <%= f.email_field :email,  class: "form-control form-control-lg " %>
+      </div>
+      </div>
+      <br />
+     <div class="form-group row">
+
+      <%= f.label :password, class:"col-sm-2 col-form-label col-form-label-lg" %>
+      <div class="col-sm-7">
+
+      <%= f.password_field :password, class: "form-control form-control-lg " %>
       <% if devise_mapping.rememberable? %>
-      <div>
+      </div>
+     </div>
+    <div >
       <%= f.check_box :remember_me, class: "form-check-input" %>
       <%= f.label :remember_me, class: "form-check-label" %>
-      </div>
+    </div>
        <% end %>
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+       <br />
+       <div class="col-sm-11">
+
+      <%= f.submit "Log in", class: "btn btn-primary" , style:"width:40%" %>
+      </div>
+      <div class="form-group row">
+      <div class="col-sm-11">
       <%= render "devise/shared/links", class: "btn btn-secondary" %>
-<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
-      
+      <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+      </div>
+      </div>
     </div>
 
   </div>
