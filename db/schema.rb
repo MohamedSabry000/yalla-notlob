@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_200815) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_233229) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -79,10 +79,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_200815) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer "receiver_id", null: false
+    t.integer "order_id", null: false
     t.integer "sender_id", null: false
     t.boolean "viewed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_notifications_on_order_id"
     t.index ["receiver_id"], name: "index_notifications_on_receiver_id"
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
@@ -109,16 +111,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_200815) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "user_auths", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.string "name"
-    t.string "oauth_token"
-    t.datetime "oauth_expires_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false
@@ -137,8 +129,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_200815) do
     t.string "invited_by_type"
     t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
-    t.string "provider"
-    t.string "uid"
+    t.string "provider", limit: 50, default: "", null: false
+    t.string "uid", limit: 50, default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
@@ -154,6 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_200815) do
   add_foreign_key "groups", "users"
   add_foreign_key "items", "orders"
   add_foreign_key "items", "users"
+  add_foreign_key "notifications", "orders"
   add_foreign_key "order_partispants", "orders"
   add_foreign_key "order_partispants", "users"
   add_foreign_key "orders", "users"
