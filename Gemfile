@@ -77,5 +77,8 @@ end
 
 gem "dotenv-rails"
 gem 'devise'
-gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
+
+gem 'redis-namespace'
+gem 'redis-rails'

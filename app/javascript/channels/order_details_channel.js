@@ -1,7 +1,8 @@
 import consumer from "./consumer"
 
-document.addEventListener('turbolinks:load', () => {
 
+// document.addEventListener('turbolinks:load', () => {
+console.log("hello");
   $(document).ready(function () {
 
     const orderID = $("#order-id")
@@ -47,4 +48,4 @@ document.addEventListener('turbolinks:load', () => {
     }
   })
 
-});
+// });
