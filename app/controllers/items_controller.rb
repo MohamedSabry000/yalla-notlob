@@ -12,14 +12,13 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.id
     @item.save
 
-    ActionCable.server.broadcast "order_#{params[:order_id]}",
-      id: @item.id,
-      # full_name: @item.full_name,
+    ActionCable.server.broadcast("order_#{params[:order_id]}",
+      {id: @item.id,
       name: @item.name,
       amount: @item.amount,
       price: @item.price,
       comment: @item.comment,
-      action: "add"
+      action: "add"})
     redirect_to order_path(@order)
   end
 
