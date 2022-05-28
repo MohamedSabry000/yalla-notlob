@@ -4,7 +4,8 @@ Rails.application.configure do
 
   ENV['GOOGLE_CLIENT_ID'] 
   ENV['GOOGLE_CLIENT_SECRET']
-
+  ENV["APP_ID"]
+  ENV["APP_SECRET"]
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
